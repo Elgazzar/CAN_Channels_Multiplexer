@@ -2,6 +2,8 @@
 #include "IoHwAb/IoHwAb.hpp"
 #include "Project.hpp"
 
+void Process_Data(void);
+
 /*Channel Configurations*/
 Channel_Cfg_T ECU1;
 Channel_Cfg_T ECU2;
@@ -30,6 +32,16 @@ void loop() {
     incomingByte = Serial.read();
     received_data[incomingByte_Idx]=incomingByte;
     incomingByte_Idx++;
+    if (incomingByte == '\n')
+    {
+      incomingByte_Idx = 0;
+      Process_Data();
+    }
+  }
+}
+
+void Process_Data()
+{
     if ( (received_data[0] == 'V') && (received_data[1] == '1') )
     {
       Serial.println("Veh Channel Connected for ECU1");
@@ -67,9 +79,7 @@ void loop() {
       //Serial.println("Veh Channel Connected for ECU1");
       //Serial.println("Veh Channel Connected for ECU2");
     }
-    if (incomingByte == '\n')
-    {
-      incomingByte_Idx = 0;
-    }
-  }
+    received_data[IDX_0] = '\0';
+    received_data[IDX_1] = '\0';
+    received_data[IDX_2] = '\0';
 }
