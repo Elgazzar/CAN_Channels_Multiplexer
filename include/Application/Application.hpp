@@ -1,7 +1,10 @@
-#ifndef _Project_
-#define _Project_
+#ifndef _Application_
+#define _Application_
 
 #include "Mux_Handler/Mux_Handler.hpp"
+
+void Process_Application_Data(char *received_data);
+void Application_Init(void);
 
 /*Array IDX*/
 #define IDX_0 0
