@@ -8,7 +8,7 @@
 #define IDX_1 1
 #define IDX_2 2
 /*define string max length*/
-#define Max_Length 3
+#define Max_Length 3 /*Max Length is a 3 Char*/
 
 /*Define channel names with ECU Channels names*/
 #define Veh_Channel Channel0
