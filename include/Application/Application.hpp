@@ -10,6 +10,10 @@ void Application_Init(void);
 #define IDX_0 0
 #define IDX_1 1
 #define IDX_2 2
+
+/*EEPROM Addresses for the data*/
+#define Channel_Cfg_Address 0
+#define ECU_Cfg_Address 1
 /*define string max length*/
 #define Max_Length 3 /*Max Length is a 3 Char*/
 
