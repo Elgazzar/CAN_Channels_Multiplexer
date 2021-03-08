@@ -3,10 +3,9 @@
 #include "Application/Application.hpp"
 
 
-
 /*Serial Configuration*/
 char incomingByte;
-char incomingByte_Idx = 0;
+unsigned char incomingByte_Idx = 0;
 char received_data[Max_Length];
 
 
@@ -26,9 +25,10 @@ void loop() {
     incomingByte = Serial.read();
     received_data[incomingByte_Idx] = incomingByte;
     incomingByte_Idx++;
-    if (incomingByte == '\n')
+    if (incomingByte == '\n') /*End of line char*/
     {
-      incomingByte_Idx = 0;
+      incomingByte_Idx = 0; /*reset received chars counter*/
+      /*Process received data for Application*/
       Process_Application_Data(received_data);
     }
   }
