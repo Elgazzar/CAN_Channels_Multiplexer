@@ -22,11 +22,16 @@ void setup() {
   ECU1.Selection_1 = S1;
   ECU2.Selection_0 = S2;
   ECU2.Selection_1 = S3;
+  /*By default Set Channel to veh channel*/
+  SelectChannel(Veh_Channel,ECU1);
+  SelectChannel(Veh_Channel,ECU2);
+  /*Print that veh channel is the connected channel*/
+  Serial.println("Veh Channel Connected for ECU1");
+  Serial.println("Veh Channel Connected for ECU2");
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  SelectChannel(Veh_Channel,ECU1);
   if (Serial.available() > 0)
   {
     incomingByte = Serial.read();
@@ -94,11 +99,7 @@ void Process_Data()
     }
     else
     {
-      /*By default set channel for veh channel for both ECUS*/
-      SelectChannel(Veh_Channel , ECU1);
-      SelectChannel(Veh_Channel , ECU2);
-      Serial.println("Veh Channel Connected for ECU1");
-      Serial.println("Veh Channel Connected for ECU2");
+      /*Do Nothing*/
     }
     /*Reset received_data after processing*/
     received_data[IDX_0] = '\0';
